@@ -84,18 +84,19 @@ Three.js powered Minecraft skin viewer.
 ## 조명
 기본적으로는, 씬에는 두가지 조명이 적용되어있습니다. 하나는 ambient 조명이고, 다른 하나는 카메라로부터 나오는 point 조명입니다.
 
-To change the light intensity:
+조명의 강도를 변경하려면:
 ```js
 skinViewer.cameraLight.intensity = 0.9;
 skinViewer.globalLight.intensity = 0.1;
 ```
 
-Setting `globalLight.intensity` to `1.0` and `cameraLight.intensity` to `0.0`
-will completely disable shadows.
+`globalLight.intensity`을 `1.0`으로 설정하고 `cameraLight.intensity`를 `0.0`으로 설정하면
+완전히 그림자를 없앱니다.
 
 ## Ears
-skinview3d supports two types of ear texture:
-* `standalone`: 14x7 image that contains the ear ([example](https://github.com/bs-community/skinview3d/blob/master/examples/img/ears.png))
+skinview3d는 두가지 유형의 귀를 지원합니다 
+텍스처:
+* `독립형`: 14x7 image that contains the ear ([example](https://github.com/bs-community/skinview3d/blob/master/examples/img/ears.png))
 * `skin`: Skin texture that contains the ear (e.g. [deadmau5's skin](https://minecraft.fandom.com/wiki/Easter_eggs#Deadmau5.27s_ears))
 
 Usage:
@@ -122,13 +123,13 @@ skinViewer.loadEars("img/ears.png", { textureType: "standalone" });
 skinViewer.loadEars("img/deadmau5.png", { textureType: "skin" });
 ```
 
-## Name Tag
+## 이름 태그
 Usage:
 ```js
-// Name tag with text "hello"
+// 이름 태그를 "hello"로 설정하기
 skinViewer.nameTag = "hello";
 
-// 텍스트의 색 지정
+// 이름 태그의 색 지정
 skinViewer.nameTag = new skinview3d.NameTagObject("hello", { textStyle: "yellow" });
 
 // 이름 태그 해제
