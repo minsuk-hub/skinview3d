@@ -1,7 +1,7 @@
 import { PlayerObject } from "./model.js";
 
 /**
- * An animation which can be played on a {@link PlayerObject}.
+ * {@link PlayerObject}로 실행될 수 있는 애니메이션.
  *
  * This is an abstract class. Subclasses of this class would implement
  * particular animations.
@@ -77,10 +77,10 @@ export class FunctionAnimation extends PlayerAnimation {
 
 export class IdleAnimation extends PlayerAnimation {
 	protected animate(player: PlayerObject): void {
-		// Multiply by animation's natural speed
+		// 애니메이션의 기본 속도를 곱합니다.
 		const t = this.progress * 2;
 
-		// Arm swing
+		// 팔 스윙
 		const basicArmRotationZ = Math.PI * 0.02;
 		player.skin.leftArm.rotation.z = Math.cos(t) * 0.03 + basicArmRotationZ;
 		player.skin.rightArm.rotation.z = Math.cos(t + Math.PI) * 0.03 - basicArmRotationZ;
@@ -107,7 +107,7 @@ export class WalkingAnimation extends PlayerAnimation {
 		player.skin.leftLeg.rotation.x = Math.sin(t) * 0.5;
 		player.skin.rightLeg.rotation.x = Math.sin(t + Math.PI) * 0.5;
 
-		// Arm swing
+		// 팔 스윙
 		player.skin.leftArm.rotation.x = Math.sin(t + Math.PI) * 0.5;
 		player.skin.rightArm.rotation.x = Math.sin(t) * 0.5;
 		const basicArmRotationZ = Math.PI * 0.02;
@@ -169,8 +169,8 @@ function clamp(num: number, min: number, max: number): number {
 
 export class FlyingAnimation extends PlayerAnimation {
 	protected animate(player: PlayerObject): void {
-		// Body rotation finishes in 0.5s
-		// Elytra expansion finishes in 3.3s
+		// 몸통의 회전은 0.5초안에 종료됩니다
+		// 겉날개의 확장은 3.3초안에 종료됩니다
 
 		const t = this.progress > 0 ? this.progress * 20 : 0;
 		const startProgress = clamp((t * t) / 100, 0, 1);
