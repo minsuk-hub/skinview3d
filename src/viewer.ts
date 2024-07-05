@@ -43,8 +43,8 @@ import { NameTagObject } from "./nametag.js";
 
 export interface LoadOptions {
 	/**
-	 * Whether to make the object visible after the texture is loaded.
-	 *
+	 * 
+	 * 텍스쳐가 로드된후에 객체를 보이게 할지 설정하는 변수
 	 * @defaultValue `true`
 	 */
 	makeVisible?: boolean;
