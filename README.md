@@ -8,13 +8,13 @@ skinview3d
 
 Three.js powered Minecraft skin viewer.
 
-# Features
-* 1.8 Skins
-* HD Skins
-* Capes
-* Ears
-* Elytras
-* Slim Arms
+# 기능
+* 1.8 스킨들
+* HD 스킨들
+* 망토
+* 귀
+* 겉날개
+* 슬림한 팔
   * Automatic model detection (Slim / Default)
 * FXAA (fast approximate anti-aliasing)
 
