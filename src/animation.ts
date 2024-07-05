@@ -3,21 +3,21 @@ import { PlayerObject } from "./model.js";
 /**
  * {@link PlayerObject}로 실행될 수 있는 애니메이션.
  *
- * This is an abstract class. Subclasses of this class would implement
- * particular animations.
+ * 이 클래스는 추상 클래스입니다. 하위 클래스가 특정 애니메이션을 상속받습니다.
+ *
  */
 export abstract class PlayerAnimation {
 	/**
 	 * The speed of the animation.
 	 *
-	 * @defaultValue `1.0`
+	 * @기본값 `1.0`
 	 */
 	speed: number = 1.0;
 
 	/**
-	 * Whether the animation is paused.
+	 * 애니메이션이 중지되었는가 하는 변수
 	 *
-	 * @defaultValue `false`
+	 * @기본값 `false`
 	 */
 	paused: boolean = false;
 
@@ -145,11 +145,11 @@ export class RunningAnimation extends PlayerAnimation {
 		player.skin.leftArm.rotation.z = Math.cos(t) * 0.1 + basicArmRotationZ;
 		player.skin.rightArm.rotation.z = Math.cos(t + Math.PI) * 0.1 - basicArmRotationZ;
 
-		// Jumping
+		// 점프
 		player.position.y = Math.cos(t * 2);
-		// Dodging when running
+		// 뛸때 살짝 피하기
 		player.position.x = Math.cos(t) * 0.15;
-		// Slightly tilting when running
+		// 뛸때 살짝 기울이기
 		player.rotation.z = Math.cos(t + Math.PI) * 0.01;
 
 		// Apply higher swing frequency, lower amplitude,
