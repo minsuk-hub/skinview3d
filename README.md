@@ -128,10 +128,10 @@ Usage:
 // Name tag with text "hello"
 skinViewer.nameTag = "hello";
 
-// Specify the text color
+// 텍스트의 색 지정
 skinViewer.nameTag = new skinview3d.NameTagObject("hello", { textStyle: "yellow" });
 
-// Unset the name tag
+// 이름 태그 해제
 skinViewer.nameTag = null;
 ```
 
