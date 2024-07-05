@@ -6,7 +6,7 @@ skinview3d
 [![MIT License](https://img.shields.io/badge/license-MIT-yellowgreen.svg?style=flat-square)](https://github.com/bs-community/skinview3d/blob/master/LICENSE)
 [![Gitter Chat](https://img.shields.io/gitter/room/TechnologyAdvice/Stardust.svg?style=flat-square)](https://gitter.im/skinview3d/Lobby)
 
-Three.js powered Minecraft skin viewer.
+Three.js로 마인크래프트 스킨을 렌더링합니다.
 
 # 기능
 * 1.8 스킨들
@@ -96,35 +96,34 @@ skinViewer.globalLight.intensity = 0.1;
 ## Ears
 skinview3d는 두가지 유형의 귀를 지원합니다 
 텍스처:
-* `독립형`: 14x7 image that contains the ear ([example](https://github.com/bs-community/skinview3d/blob/master/examples/img/ears.png))
-* `skin`: Skin texture that contains the ear (e.g. [deadmau5's skin](https://minecraft.fandom.com/wiki/Easter_eggs#Deadmau5.27s_ears))
+* `독립형`: 14x7 이미지가 귀를 포함한 것 ([example](https://github.com/bs-community/skinview3d/blob/master/examples/img/ears.png))
+* `스킨`: 귀를 포함한 스킨 텍스쳐 (e.g. [deadmau5's skin](https://minecraft.fandom.com/wiki/Easter_eggs#Deadmau5.27s_ears))
 
-Usage:
+사용:
 ```js
-// You can specify ears in the constructor:
+// 생성자에서 귀를 지정할 수 있습니다:
 new skinview3d.SkinViewer({
 	skin: "img/deadmau5.png",
 
-	// Use ears drawn on the current skin (img/deadmau5.png)
+	// 현재 스킨에 귀를 사용하기 (img/deadmau5.png)
 	ears: "current-skin",
 
-	// Or use ears from other textures
-	ears: {
+	// 또는 다른 텍스쳐 이미지에서 가져온 귀를 사용할 수 있습니다: {
 		textureType: "standalone", // "standalone" or "skin"
 		source: "img/ears.png"
 	}
 });
 
-// Show ears when loading skins:
+// 스킨을 로드할때 귀를 보이게 하기:
 skinViewer.loadSkin("img/deadmau5.png", { ears: true });
 
-// Use ears from other textures:
+// 다른 텍스쳐에서 가져온 귀를 사용하기:
 skinViewer.loadEars("img/ears.png", { textureType: "standalone" });
 skinViewer.loadEars("img/deadmau5.png", { textureType: "skin" });
 ```
 
 ## 이름 태그
-Usage:
+사용:
 ```js
 // 이름 태그를 "hello"로 설정하기
 skinViewer.nameTag = "hello";
