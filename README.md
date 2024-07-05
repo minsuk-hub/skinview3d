@@ -67,22 +67,22 @@ Three.js powered Minecraft skin viewer.
 	// 스킨 회전
 	skinViewer.autoRotate = true;
 
-	// Apply an animation
+	// 애니메이션 적용
 	skinViewer.animation = new skinview3d.WalkingAnimation();
 
-	// Set the speed of the animation
+	// 애니메이션의 속도 설정
 	skinViewer.animation.speed = 3;
 
-	// Pause the animation
+	// 애니메이션 중지하기
 	skinViewer.animation.paused = true;
 
-	// Remove the animation
+	// 애니메이션 삭제하기
 	skinViewer.animation = null;
 </script>
 ```
 
-## Lighting
-By default, there are two lights on the scene. One is an ambient light, and the other is a point light from the camera.
+## 조명
+기본적으로는, 씬에는 두가지 조명이 적용되어있습니다. 하나는 ambient 조명이고, 다른 하나는 카메라로부터 나오는 point 조명입니다.
 
 To change the light intensity:
 ```js
