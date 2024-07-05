@@ -15,11 +15,11 @@ Three.js powered Minecraft skin viewer.
 * 귀
 * 겉날개
 * 슬림한 팔
-  * Automatic model detection (Slim / Default)
-* FXAA (fast approximate anti-aliasing)
+  * 모델 자동 감지기능 (슬림 / 기본)
+* FXAA (빠르고 정확한 안티앨리어싱)
 
-# Usage
-[Example of using skinview3d](https://bs-community.github.io/skinview3d/)
+# 사용
+[skinview3d의 사용 예시](https://bs-community.github.io/skinview3d/)
 
 [![CodeSandbox](https://img.shields.io/badge/Codesandbox-040404?style=for-the-badge&logo=codesandbox&logoColor=DBDBDB)](https://codesandbox.io/s/skinview3d-template-vdmuh4)
 
@@ -33,38 +33,38 @@ Three.js powered Minecraft skin viewer.
 		skin: "img/skin.png"
 	});
 
-	// Change viewer size
+	// 뷰어의 크기 변경하기
 	skinViewer.width = 600;
 	skinViewer.height = 800;
 
-	// Load another skin
+	// 다른 스킨 로드하기
 	skinViewer.loadSkin("img/skin2.png");
 
-	// Load a cape
+	// 망토 로드하기
 	skinViewer.loadCape("img/cape.png");
 
-	// Load an elytra (from a cape texture)
+	// 겉날개 로드하기 (텍스쳐에서 가져옴)
 	skinViewer.loadCape("img/cape.png", { backEquipment: "elytra" });
 
-	// Unload(hide) the cape / elytra
+	// 망토 로드 해제(숨김) / 겉날개
 	skinViewer.loadCape(null);
 
-	// Set the background color
+	// 배경색 설정
 	skinViewer.background = 0x5a76f3;
 
-	// Set the background to a normal image
+	// 기본 이미지로 배경로드
 	skinViewer.loadBackground("img/background.png");
 
-	// Set the background to a panoramic image
+	// 배경을 파노라마로 로드하기
 	skinViewer.loadPanorama("img/panorama1.png");
 
-	// Change camera FOV
+	// FOV 카메라 수치 변경
 	skinViewer.fov = 70;
 
-	// Zoom out
+	// 줌아웃
 	skinViewer.zoom = 0.5;
 
-	// Rotate the player
+	// 스킨 회전
 	skinViewer.autoRotate = true;
 
 	// Apply an animation
