@@ -45,7 +45,7 @@ export interface LoadOptions {
 	/**
 	 * 
 	 * 텍스쳐가 로드된후에 객체를 보이게 할지 설정하는 변수
-	 * @defaultValue `true`
+	 * @기본값 `true`
 	 */
 	makeVisible?: boolean;
 }
