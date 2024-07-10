@@ -8,7 +8,7 @@ import { PlayerObject } from "./model.js";
  */
 export abstract class PlayerAnimation {
 	/**
-	 * The speed of the animation.
+	 * 애니메이션의 속도
 	 *
 	 * @기본값 `1.0`
 	 */
@@ -22,20 +22,20 @@ export abstract class PlayerAnimation {
 	paused: boolean = false;
 
 	/**
-	 * The current progress of the animation.
+	 * 애니메이션의 현재 진행률
 	 */
 	progress: number = 0;
 
 	/**
-	 * Plays the animation.
+	 * 애니메이션을 재생합니다
 	 *
-	 * @param player - the player object
+	 * @param player - player 객체
 	 * @param delta - progress difference since last call
 	 */
 	protected abstract animate(player: PlayerObject, delta: number): void;
 
 	/**
-	 * Plays the animation, and update the progress.
+	 * 진행률을 업데이트하고, 애니메이션을 재생합니다
 	 *
 	 * The elapsed time `deltaTime` will be scaled by {@link speed}.
 	 * If {@link paused} is `true`, this method will do nothing.
