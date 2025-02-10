@@ -135,17 +135,22 @@ skinViewer.nameTag = new skinview3d.NameTagObject("hello", { textStyle: "yellow"
 skinViewer.nameTag = null;
 ```
 
-In order to display name tags correctly, you need the `Minecraft` font from
-[South-Paw/typeface-minecraft](https://github.com/South-Paw/typeface-minecraft).
-This font is available at [`assets/minecraft.woff2`](assets/minecraft.woff2).
+이름 태그를 올바르게 표시하려면 South-Paw/typeface-minecraft에서 제공하는 Minecraft 폰트가 필요합니다.
+이 폰트는 assets/minecraft.woff2에서 사용할 수 있습니다.
 
-To load this font, please add the `@font-face` rule to your CSS:
-```css
+폰트 로드
+
+이 폰트를 로드하려면 CSS에 @font-face 규칙을 추가하세요:
+
 @font-face {
 	font-family: 'Minecraft';
 	src: url('/path/to/minecraft.woff2') format('woff2');
 }
-```
 
-# Build
-`npm run build`
+빌드
+
+아래 명령어를 실행하여 빌드를 수행하세요:
+
+npm run build
+
+
