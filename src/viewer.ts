@@ -31,6 +31,39 @@ import {
 	Clock,
 	Object3D,
 } from "three";
+
+// import 'package:flutter_gl/flutter_gl.dart';
+// import 'package:three_dart/three_dart.dart';
+// import 'package:three_dart/extra/controls/orbit_controls.dart';
+// import 'package:three_dart/postprocessing/effect_composer.dart';
+// import 'package:three_dart/postprocessing/render_pass.dart';
+// import 'package:three_dart/postprocessing/shader_pass.dart';
+// import 'package:three_dart/shaders/fxaa_shader.dart';
+
+// import 'skinview_utils.dart'; // SkinView 관련 유틸을 Dart로 변환한 파일
+
+// // 색상 및 조명 관련
+// import 'package:three_dart/math/color.dart';
+// import 'package:three_dart/lights/point_light.dart';
+// import 'package:three_dart/lights/ambient_light.dart';
+
+// // 3D 관련
+// import 'package:three_dart/scenes/scene.dart';
+// import 'package:three_dart/cameras/perspective_camera.dart';
+// import 'package:three_dart/core/group.dart';
+// import 'package:three_dart/core/object3d.dart';
+// import 'package:three_dart/textures/texture.dart';
+// import 'package:three_dart/textures/canvas_texture.dart';
+
+// // 렌더링 관련
+// import 'package:three_dart/renderers/webgl_renderer.dart';
+// import 'package:three_dart/renderers/webgl_render_target.dart';
+
+// // 유틸리티
+// import 'package:three_dart/math/vector2.dart';
+// import 'package:three_dart/core/clock.dart';
+// import 'package:three_dart/constants.dart'; // NearestFilter, EquirectangularReflectionMapping 등
+
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer.js";
 import { FullScreenQuad } from "three/examples/jsm/postprocessing/Pass.js";
@@ -41,6 +74,20 @@ import { PlayerAnimation } from "./animation.js";
 import { type BackEquipment, PlayerObject } from "./model.js";
 import { NameTagObject } from "./nametag.js";
 
+// 변환
+// import 'package:flutter_gl/flutter_gl.dart';
+// import 'package:three_dart/three_dart.dart';
+// import 'package:three_dart/extra/controls/orbit_controls.dart';
+// import 'package:three_dart/postprocessing/effect_composer.dart';
+// import 'package:three_dart/postprocessing/render_pass.dart';
+// import 'package:three_dart/postprocessing/shader_pass.dart';
+// import 'package:three_dart/shaders/fxaa_shader.dart';
+
+// import 'animation.dart';
+// import 'model.dart'; // BackEquipment 및 PlayerObject를 포함하는 파일
+// import 'nametag.dart'; // NameTagObject를 포함하는 파일
+
+
 export interface LoadOptions {
 	/**
 	 * 
@@ -49,6 +96,15 @@ export interface LoadOptions {
 	 */
 	makeVisible?: boolean;
 }
+
+// 변환
+// class LoadOptions {
+//   /// 텍스처가 로드된 후에 객체를 보이게 할지 설정하는 변수
+//   /// 기본값: `true`
+//   final bool makeVisible;
+
+//   LoadOptions({this.makeVisible = true});
+// }
 
 export interface SkinLoadOptions extends LoadOptions {
 	/**
