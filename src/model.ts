@@ -62,9 +62,9 @@ function setSkinUVs(box: BoxGeometry, u: number, v: number, width: number, heigh
 	setUVs(box, u, v, width, height, depth, 64, 64);
 }
 
-function setCapeUVs(box: BoxGeometry, u: number, v: number, width: number, height: number, depth: number): void {
-	setUVs(box, u, v, width, height, depth, 64, 32);
-}
+// function setCapeUVs(box: BoxGeometry, u: number, v: number, width: number, height: number, depth: number): void {
+// 	setUVs(box, u, v, width, height, depth, 64, 32);
+// }
 
 /**
  * Notice that innerLayer and outerLayer may NOT be the direct children of the Group.
@@ -312,144 +312,144 @@ export class SkinObject extends Group {
 	}
 }
 
-export class CapeObject extends Group {
-	readonly cape: Mesh;
+// export class CapeObject extends Group {
+// 	readonly cape: Mesh;
 
-	private material: MeshStandardMaterial;
+// 	private material: MeshStandardMaterial;
 
-	constructor() {
-		super();
+// 	constructor() {
+// 		super();
 
-		this.material = new MeshStandardMaterial({
-			side: DoubleSide,
-			transparent: true,
-			alphaTest: 1e-5,
-		});
+// 		this.material = new MeshStandardMaterial({
+// 			side: DoubleSide,
+// 			transparent: true,
+// 			alphaTest: 1e-5,
+// 		});
 
-		// +z (front) - inside of cape
-		// -z (back) - outside of cape
-		const capeBox = new BoxGeometry(10, 16, 1);
-		setCapeUVs(capeBox, 0, 0, 10, 16, 1);
-		this.cape = new Mesh(capeBox, this.material);
-		this.cape.position.y = -8;
-		this.cape.position.z = 0.5;
-		this.add(this.cape);
-	}
+// 		// +z (front) - inside of cape
+// 		// -z (back) - outside of cape
+// 		const capeBox = new BoxGeometry(10, 16, 1);
+// 		setCapeUVs(capeBox, 0, 0, 10, 16, 1);
+// 		this.cape = new Mesh(capeBox, this.material);
+// 		this.cape.position.y = -8;
+// 		this.cape.position.z = 0.5;
+// 		this.add(this.cape);
+// 	}
 
-	get map(): Texture | null {
-		return this.material.map;
-	}
+// 	get map(): Texture | null {
+// 		return this.material.map;
+// 	}
 
-	set map(newMap: Texture | null) {
-		this.material.map = newMap;
-		this.material.needsUpdate = true;
-	}
-}
+// 	set map(newMap: Texture | null) {
+// 		this.material.map = newMap;
+// 		this.material.needsUpdate = true;
+// 	}
+// }
 
-export class ElytraObject extends Group {
-	readonly leftWing: Group;
-	readonly rightWing: Group;
+// export class ElytraObject extends Group {
+// 	readonly leftWing: Group;
+// 	readonly rightWing: Group;
 
-	private material: MeshStandardMaterial;
+// 	private material: MeshStandardMaterial;
 
-	constructor() {
-		super();
+// 	constructor() {
+// 		super();
 
-		this.material = new MeshStandardMaterial({
-			side: DoubleSide,
-			transparent: true,
-			alphaTest: 1e-5,
-		});
+// 		this.material = new MeshStandardMaterial({
+// 			side: DoubleSide,
+// 			transparent: true,
+// 			alphaTest: 1e-5,
+// 		});
 
-		const leftWingBox = new BoxGeometry(12, 22, 4);
-		setCapeUVs(leftWingBox, 22, 0, 10, 20, 2);
-		const leftWingMesh = new Mesh(leftWingBox, this.material);
-		leftWingMesh.position.x = -5;
-		leftWingMesh.position.y = -10;
-		leftWingMesh.position.z = -1;
-		this.leftWing = new Group();
-		this.leftWing.add(leftWingMesh);
-		this.add(this.leftWing);
+// 		const leftWingBox = new BoxGeometry(12, 22, 4);
+// 		setCapeUVs(leftWingBox, 22, 0, 10, 20, 2);
+// 		const leftWingMesh = new Mesh(leftWingBox, this.material);
+// 		leftWingMesh.position.x = -5;
+// 		leftWingMesh.position.y = -10;
+// 		leftWingMesh.position.z = -1;
+// 		this.leftWing = new Group();
+// 		this.leftWing.add(leftWingMesh);
+// 		this.add(this.leftWing);
 
-		const rightWingBox = new BoxGeometry(12, 22, 4);
-		setCapeUVs(rightWingBox, 22, 0, 10, 20, 2);
-		const rightWingMesh = new Mesh(rightWingBox, this.material);
-		rightWingMesh.scale.x = -1;
-		rightWingMesh.position.x = 5;
-		rightWingMesh.position.y = -10;
-		rightWingMesh.position.z = -1;
-		this.rightWing = new Group();
-		this.rightWing.add(rightWingMesh);
-		this.add(this.rightWing);
+// 		const rightWingBox = new BoxGeometry(12, 22, 4);
+// 		setCapeUVs(rightWingBox, 22, 0, 10, 20, 2);
+// 		const rightWingMesh = new Mesh(rightWingBox, this.material);
+// 		rightWingMesh.scale.x = -1;
+// 		rightWingMesh.position.x = 5;
+// 		rightWingMesh.position.y = -10;
+// 		rightWingMesh.position.z = -1;
+// 		this.rightWing = new Group();
+// 		this.rightWing.add(rightWingMesh);
+// 		this.add(this.rightWing);
 
-		this.leftWing.position.x = 5;
-		this.leftWing.rotation.x = 0.2617994;
-		this.resetJoints();
-	}
+// 		this.leftWing.position.x = 5;
+// 		this.leftWing.rotation.x = 0.2617994;
+// 		this.resetJoints();
+// 	}
 
-	resetJoints(): void {
-		this.leftWing.rotation.y = 0.01; // to avoid z-fighting
-		this.leftWing.rotation.z = 0.2617994;
-		this.updateRightWing();
-	}
+// 	resetJoints(): void {
+// 		this.leftWing.rotation.y = 0.01; // to avoid z-fighting
+// 		this.leftWing.rotation.z = 0.2617994;
+// 		this.updateRightWing();
+// 	}
 
-	/**
-	 * Mirrors the position & rotation of left wing,
-	 * and apply them to the right wing.
-	 */
-	updateRightWing(): void {
-		this.rightWing.position.x = -this.leftWing.position.x;
-		this.rightWing.position.y = this.leftWing.position.y;
-		this.rightWing.rotation.x = this.leftWing.rotation.x;
-		this.rightWing.rotation.y = -this.leftWing.rotation.y;
-		this.rightWing.rotation.z = -this.leftWing.rotation.z;
-	}
+// 	/**
+// 	 * Mirrors the position & rotation of left wing,
+// 	 * and apply them to the right wing.
+// 	 */
+// 	updateRightWing(): void {
+// 		this.rightWing.position.x = -this.leftWing.position.x;
+// 		this.rightWing.position.y = this.leftWing.position.y;
+// 		this.rightWing.rotation.x = this.leftWing.rotation.x;
+// 		this.rightWing.rotation.y = -this.leftWing.rotation.y;
+// 		this.rightWing.rotation.z = -this.leftWing.rotation.z;
+// 	}
 
-	get map(): Texture | null {
-		return this.material.map;
-	}
+// 	get map(): Texture | null {
+// 		return this.material.map;
+// 	}
 
-	set map(newMap: Texture | null) {
-		this.material.map = newMap;
-		this.material.needsUpdate = true;
-	}
-}
+// 	set map(newMap: Texture | null) {
+// 		this.material.map = newMap;
+// 		this.material.needsUpdate = true;
+// 	}
+// }
 
-export class EarsObject extends Group {
-	readonly rightEar: Mesh;
-	readonly leftEar: Mesh;
+// export class EarsObject extends Group {
+// 	readonly rightEar: Mesh;
+// 	readonly leftEar: Mesh;
 
-	private material: MeshStandardMaterial;
+// 	private material: MeshStandardMaterial;
 
-	constructor() {
-		super();
+// 	constructor() {
+// 		super();
 
-		this.material = new MeshStandardMaterial({
-			side: FrontSide,
-		});
-		const earBox = new BoxGeometry(8, 8, 4 / 3);
-		setUVs(earBox, 0, 0, 6, 6, 1, 14, 7);
+// 		this.material = new MeshStandardMaterial({
+// 			side: FrontSide,
+// 		});
+// 		const earBox = new BoxGeometry(8, 8, 4 / 3);
+// 		setUVs(earBox, 0, 0, 6, 6, 1, 14, 7);
 
-		this.rightEar = new Mesh(earBox, this.material);
-		this.rightEar.name = "rightEar";
-		this.rightEar.position.x = -6;
-		this.add(this.rightEar);
+// 		this.rightEar = new Mesh(earBox, this.material);
+// 		this.rightEar.name = "rightEar";
+// 		this.rightEar.position.x = -6;
+// 		this.add(this.rightEar);
 
-		this.leftEar = new Mesh(earBox, this.material);
-		this.leftEar.name = "leftEar";
-		this.leftEar.position.x = 6;
-		this.add(this.leftEar);
-	}
+// 		this.leftEar = new Mesh(earBox, this.material);
+// 		this.leftEar.name = "leftEar";
+// 		this.leftEar.position.x = 6;
+// 		this.add(this.leftEar);
+// 	}
 
-	get map(): Texture | null {
-		return this.material.map;
-	}
+// 	get map(): Texture | null {
+// 		return this.material.map;
+// 	}
 
-	set map(newMap: Texture | null) {
-		this.material.map = newMap;
-		this.material.needsUpdate = true;
-	}
-}
+// 	set map(newMap: Texture | null) {
+// 		this.material.map = newMap;
+// 		this.material.needsUpdate = true;
+// 	}
+// }
 
 export type BackEquipment = "cape" | "elytra";
 
@@ -457,9 +457,9 @@ const CapeDefaultAngle = (10.8 * Math.PI) / 180;
 
 export class PlayerObject extends Group {
 	readonly skin: SkinObject;
-	readonly cape: CapeObject;
-	readonly elytra: ElytraObject;
-	readonly ears: EarsObject;
+	// readonly cape: CapeObject;
+	// readonly elytra: ElytraObject;
+	// readonly ears: EarsObject;
 
 	constructor() {
 		super();
@@ -469,47 +469,47 @@ export class PlayerObject extends Group {
 		this.skin.position.y = 8;
 		this.add(this.skin);
 
-		this.cape = new CapeObject();
-		this.cape.name = "cape";
-		this.cape.position.y = 8;
-		this.cape.position.z = -2;
-		this.cape.rotation.x = CapeDefaultAngle;
-		this.cape.rotation.y = Math.PI;
-		this.add(this.cape);
+		// this.cape = new CapeObject();
+		// this.cape.name = "cape";
+		// this.cape.position.y = 8;
+		// this.cape.position.z = -2;
+		// this.cape.rotation.x = CapeDefaultAngle;
+		// this.cape.rotation.y = Math.PI;
+		// this.add(this.cape);
 
-		this.elytra = new ElytraObject();
-		this.elytra.name = "elytra";
-		this.elytra.position.y = 8;
-		this.elytra.position.z = -2;
-		this.elytra.visible = false;
-		this.add(this.elytra);
+		// this.elytra = new ElytraObject();
+		// this.elytra.name = "elytra";
+		// this.elytra.position.y = 8;
+		// this.elytra.position.z = -2;
+		// this.elytra.visible = false;
+		// this.add(this.elytra);
 
-		this.ears = new EarsObject();
-		this.ears.name = "ears";
-		this.ears.position.y = 10;
-		this.ears.position.z = 2 / 3;
-		this.ears.visible = false;
-		this.skin.head.add(this.ears);
+		// this.ears = new EarsObject();
+		// this.ears.name = "ears";
+		// this.ears.position.y = 10;
+		// this.ears.position.z = 2 / 3;
+		// this.ears.visible = false;
+		// this.skin.head.add(this.ears);
 	}
 
-	get backEquipment(): BackEquipment | null {
-		if (this.cape.visible) {
-			return "cape";
-		} else if (this.elytra.visible) {
-			return "elytra";
-		} else {
-			return null;
-		}
-	}
+	// get backEquipment(): BackEquipment | null {
+	// 	if (this.cape.visible) {
+	// 		return "cape";
+	// 	} else if (this.elytra.visible) {
+	// 		return "elytra";
+	// 	} else {
+	// 		return null;
+	// 	}
+	// }
 
-	set backEquipment(value: BackEquipment | null) {
-		this.cape.visible = value === "cape";
-		this.elytra.visible = value === "elytra";
-	}
+	// set backEquipment(value: BackEquipment | null) {
+	// 	this.cape.visible = value === "cape";
+	// 	this.elytra.visible = value === "elytra";
+	// }
 
 	resetJoints(): void {
 		this.skin.resetJoints();
-		this.cape.rotation.x = CapeDefaultAngle;
-		this.elytra.resetJoints();
+		// this.cape.rotation.x = CapeDefaultAngle;
+		// this.elytra.resetJoints();
 	}
 }

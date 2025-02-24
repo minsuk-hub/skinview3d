@@ -129,28 +129,28 @@ export interface SkinLoadOptions extends LoadOptions {
 	ears?: boolean | "load-only";
 }
 
-export interface CapeLoadOptions extends LoadOptions {
-	/**
-	 * The equipment (`"cape"` or `"elytra"`) to show when the cape texture is loaded.
-	 *
-	 * If `makeVisible` is set to false, this option will have no effect.
-	 *
-	 * @defaultValue `"cape"`
-	 */
-	backEquipment?: BackEquipment;
-}
+// export interface CapeLoadOptions extends LoadOptions {
+// 	/**
+// 	 * The equipment (`"cape"` or `"elytra"`) to show when the cape texture is loaded.
+// 	 *
+// 	 * If `makeVisible` is set to false, this option will have no effect.
+// 	 *
+// 	 * @defaultValue `"cape"`
+// 	 */
+// 	backEquipment?: BackEquipment;
+// }
 
-export interface EarsLoadOptions extends LoadOptions {
-	/**
-	 * The type of the provided ear texture.
-	 *
-	 * - `"standalone"` means the provided texture is a 14x7 image that only contains the ears.
-	 * - `"skin"` means the provided texture is a skin texture with ears, and we will use its ear part.
-	 *
-	 * @defaultValue `"standalone"`
-	 */
-	textureType?: "standalone" | "skin";
-}
+// export interface EarsLoadOptions extends LoadOptions {
+// 	/**
+// 	 * The type of the provided ear texture.
+// 	 *
+// 	 * - `"standalone"` means the provided texture is a 14x7 image that only contains the ears.
+// 	 * - `"skin"` means the provided texture is a skin texture with ears, and we will use its ear part.
+// 	 *
+// 	 * @defaultValue `"standalone"`
+// 	 */
+// 	textureType?: "standalone" | "skin";
+// }
 
 export interface SkinViewerOptions {
 	/**
@@ -344,8 +344,8 @@ export class SkinViewer {
 	readonly fxaaPass: ShaderPass;
 
 	readonly skinCanvas: HTMLCanvasElement;
-	readonly capeCanvas: HTMLCanvasElement;
-	readonly earsCanvas: HTMLCanvasElement;
+	// readonly capeCanvas: HTMLCanvasElement;
+	// readonly earsCanvas: HTMLCanvasElement;
 	private skinTexture: Texture | null = null;
 	private capeTexture: Texture | null = null;
 	private earsTexture: Texture | null = null;
@@ -387,8 +387,8 @@ export class SkinViewer {
 		this.canvas = options.canvas === undefined ? document.createElement("canvas") : options.canvas;
 
 		this.skinCanvas = document.createElement("canvas");
-		this.capeCanvas = document.createElement("canvas");
-		this.earsCanvas = document.createElement("canvas");
+		// this.capeCanvas = document.createElement("canvas");
+		// this.earsCanvas = document.createElement("canvas");
 
 		this.scene = new Scene();
 		this.camera = new PerspectiveCamera();
@@ -440,7 +440,7 @@ export class SkinViewer {
 		this.playerObject = new PlayerObject();
 		this.playerObject.name = "player";
 		this.playerObject.skin.visible = false;
-		this.playerObject.cape.visible = false;
+		// this.playerObject.cape.visible = false;
 		this.playerWrapper = new Group();
 		this.playerWrapper.add(this.playerObject);
 		this.scene.add(this.playerWrapper);
@@ -460,14 +460,14 @@ export class SkinViewer {
 				ears: options.ears === "current-skin",
 			});
 		}
-		if (options.cape !== undefined) {
-			this.loadCape(options.cape);
-		}
-		if (options.ears !== undefined && options.ears !== "current-skin") {
-			this.loadEars(options.ears.source, {
-				textureType: options.ears.textureType,
-			});
-		}
+		// if (options.cape !== undefined) {
+		// 	this.loadCape(options.cape);
+		// }
+		// if (options.ears !== undefined && options.ears !== "current-skin") {
+		// 	this.loadEars(options.ears.source, {
+		// 		textureType: options.ears.textureType,
+		// 	});
+		// }
 		if (options.width !== undefined) {
 			this.width = options.width;
 		}
@@ -477,9 +477,9 @@ export class SkinViewer {
 		if (options.background !== undefined) {
 			this.background = options.background;
 		}
-		if (options.panorama !== undefined) {
-			this.loadPanorama(options.panorama);
-		}
+		// if (options.panorama !== undefined) {
+		// 	this.loadPanorama(options.panorama);
+		// }
 		if (options.nameTag !== undefined) {
 			this.nameTag = options.nameTag;
 		}
@@ -534,26 +534,26 @@ export class SkinViewer {
 		this.playerObject.skin.map = this.skinTexture;
 	}
 
-	private recreateCapeTexture(): void {
-		if (this.capeTexture !== null) {
-			this.capeTexture.dispose();
-		}
-		this.capeTexture = new CanvasTexture(this.capeCanvas);
-		this.capeTexture.magFilter = NearestFilter;
-		this.capeTexture.minFilter = NearestFilter;
-		this.playerObject.cape.map = this.capeTexture;
-		this.playerObject.elytra.map = this.capeTexture;
-	}
+	// private recreateCapeTexture(): void {
+	// 	if (this.capeTexture !== null) {
+	// 		this.capeTexture.dispose();
+	// 	}
+	// 	this.capeTexture = new CanvasTexture(this.capeCanvas);
+	// 	this.capeTexture.magFilter = NearestFilter;
+	// 	this.capeTexture.minFilter = NearestFilter;
+	// 	this.playerObject.cape.map = this.capeTexture;
+	// 	this.playerObject.elytra.map = this.capeTexture;
+	// }
 
-	private recreateEarsTexture(): void {
-		if (this.earsTexture !== null) {
-			this.earsTexture.dispose();
-		}
-		this.earsTexture = new CanvasTexture(this.earsCanvas);
-		this.earsTexture.magFilter = NearestFilter;
-		this.earsTexture.minFilter = NearestFilter;
-		this.playerObject.ears.map = this.earsTexture;
-	}
+	// private recreateEarsTexture(): void {
+	// 	if (this.earsTexture !== null) {
+	// 		this.earsTexture.dispose();
+	// 	}
+	// 	this.earsTexture = new CanvasTexture(this.earsCanvas);
+	// 	this.earsTexture.magFilter = NearestFilter;
+	// 	this.earsTexture.minFilter = NearestFilter;
+	// 	this.playerObject.ears.map = this.earsTexture;
+	// }
 
 	loadSkin(empty: null): void;
 	loadSkin<S extends TextureSource | RemoteImage>(
@@ -563,8 +563,11 @@ export class SkinViewer {
 
 	loadSkin(source: TextureSource | RemoteImage | null, options: SkinLoadOptions = {}): void | Promise<void> {
 		if (source === null) {
+			console.log("이미지 소스가 없습니다: viewer.ts의 566번째 줄", source);
 			this.resetSkin();
 		} else if (isTextureSource(source)) {
+			console.log("이미지 소스가 있습니다: viewer.ts의 566번째 줄", source);
+
 			loadSkinToCanvas(this.skinCanvas, source);
 			this.recreateSkinTexture();
 
@@ -578,19 +581,21 @@ export class SkinViewer {
 				this.playerObject.skin.visible = true;
 			}
 
-			if (options.ears === true || options.ears == "load-only") {
-				loadEarsToCanvasFromSkin(this.earsCanvas, source);
-				this.recreateEarsTexture();
-				if (options.ears === true) {
-					this.playerObject.ears.visible = true;
-				}
-			}
+			// if (options.ears === true || options.ears == "load-only") {
+			// 	loadEarsToCanvasFromSkin(this.earsCanvas, source);
+			// 	this.recreateEarsTexture();
+			// 	if (options.ears === true) {
+			// 		this.playerObject.ears.visible = true;
+			// 	}
+			// }
 		} else {
 			return loadImage(source).then(image => this.loadSkin(image, options));
 		}
 	}
 
 	resetSkin(): void {
+		console.log("스킨 초기화 viewer.ts의 597번째 줄: viewer.ts의 566번째 줄");
+
 		this.playerObject.skin.visible = false;
 		this.playerObject.skin.map = null;
 		if (this.skinTexture !== null) {
@@ -599,74 +604,74 @@ export class SkinViewer {
 		}
 	}
 
-	loadCape(empty: null): void;
-	loadCape<S extends TextureSource | RemoteImage>(
-		source: S,
-		options?: CapeLoadOptions
-	): S extends TextureSource ? void : Promise<void>;
+	// loadCape(empty: null): void;
+	// loadCape<S extends TextureSource | RemoteImage>(
+	// 	source: S,
+	// 	options?: CapeLoadOptions
+	// ): S extends TextureSource ? void : Promise<void>;
 
-	loadCape(source: TextureSource | RemoteImage | null, options: CapeLoadOptions = {}): void | Promise<void> {
-		if (source === null) {
-			this.resetCape();
-		} else if (isTextureSource(source)) {
-			loadCapeToCanvas(this.capeCanvas, source);
-			this.recreateCapeTexture();
+	// loadCape(source: TextureSource | RemoteImage | null, options: CapeLoadOptions = {}): void | Promise<void> {
+	// 	if (source === null) {
+	// 		this.resetCape();
+	// 	} else if (isTextureSource(source)) {
+	// 		loadCapeToCanvas(this.capeCanvas, source);
+	// 		this.recreateCapeTexture();
 
-			if (options.makeVisible !== false) {
-				this.playerObject.backEquipment = options.backEquipment === undefined ? "cape" : options.backEquipment;
-			}
-		} else {
-			return loadImage(source).then(image => this.loadCape(image, options));
-		}
-	}
+	// 		if (options.makeVisible !== false) {
+	// 			this.playerObject.backEquipment = options.backEquipment === undefined ? "cape" : options.backEquipment;
+	// 		}
+	// 	} else {
+	// 		return loadImage(source).then(image => this.loadCape(image, options));
+	// 	}
+	// }
 
-	resetCape(): void {
-		this.playerObject.backEquipment = null;
-		this.playerObject.cape.map = null;
-		this.playerObject.elytra.map = null;
-		if (this.capeTexture !== null) {
-			this.capeTexture.dispose();
-			this.capeTexture = null;
-		}
-	}
+	// resetCape(): void {
+	// 	this.playerObject.backEquipment = null;
+	// 	this.playerObject.cape.map = null;
+	// 	this.playerObject.elytra.map = null;
+	// 	if (this.capeTexture !== null) {
+	// 		this.capeTexture.dispose();
+	// 		this.capeTexture = null;
+	// 	}
+	// }
 
-	loadEars(empty: null): void;
-	loadEars<S extends TextureSource | RemoteImage>(
-		source: S,
-		options?: EarsLoadOptions
-	): S extends TextureSource ? void : Promise<void>;
+	// loadEars(empty: null): void;
+	// loadEars<S extends TextureSource | RemoteImage>(
+	// 	source: S,
+	// 	options?: EarsLoadOptions
+	// ): S extends TextureSource ? void : Promise<void>;
 
-	loadEars(source: TextureSource | RemoteImage | null, options: EarsLoadOptions = {}): void | Promise<void> {
-		if (source === null) {
-			this.resetEars();
-		} else if (isTextureSource(source)) {
-			if (options.textureType === "skin") {
-				loadEarsToCanvasFromSkin(this.earsCanvas, source);
-			} else {
-				loadEarsToCanvas(this.earsCanvas, source);
-			}
-			this.recreateEarsTexture();
+	// loadEars(source: TextureSource | RemoteImage | null, options: EarsLoadOptions = {}): void | Promise<void> {
+	// 	if (source === null) {
+	// 		this.resetEars();
+	// 	} else if (isTextureSource(source)) {
+	// 		if (options.textureType === "skin") {
+	// 			loadEarsToCanvasFromSkin(this.earsCanvas, source);
+	// 		} else {
+	// 			loadEarsToCanvas(this.earsCanvas, source);
+	// 		}
+	// 		this.recreateEarsTexture();
 
-			if (options.makeVisible !== false) {
-				this.playerObject.ears.visible = true;
-			}
-		} else {
-			return loadImage(source).then(image => this.loadEars(image, options));
-		}
-	}
+	// 		if (options.makeVisible !== false) {
+	// 			this.playerObject.ears.visible = true;
+	// 		}
+	// 	} else {
+	// 		return loadImage(source).then(image => this.loadEars(image, options));
+	// 	}
+	// }
 
-	resetEars(): void {
-		this.playerObject.ears.visible = false;
-		this.playerObject.ears.map = null;
-		if (this.earsTexture !== null) {
-			this.earsTexture.dispose();
-			this.earsTexture = null;
-		}
-	}
+	// resetEars(): void {
+	// 	this.playerObject.ears.visible = false;
+	// 	this.playerObject.ears.map = null;
+	// 	if (this.earsTexture !== null) {
+	// 		this.earsTexture.dispose();
+	// 		this.earsTexture = null;
+	// 	}
+	// }
 
-	loadPanorama<S extends TextureSource | RemoteImage>(source: S): S extends TextureSource ? void : Promise<void> {
-		return this.loadBackground(source, EquirectangularReflectionMapping);
-	}
+	// loadPanorama<S extends TextureSource | RemoteImage>(source: S): S extends TextureSource ? void : Promise<void> {
+	// 	return this.loadBackground(source, EquirectangularReflectionMapping);
+	// }
 
 	loadBackground<S extends TextureSource | RemoteImage>(
 		source: S,
@@ -737,8 +742,8 @@ export class SkinViewer {
 		this.controls.dispose();
 		this.renderer.dispose();
 		this.resetSkin();
-		this.resetCape();
-		this.resetEars();
+		// this.resetCape();
+		// this.resetEars();
 		this.background = null;
 		(this.fxaaPass.fsQuad as FullScreenQuad).dispose();
 	}

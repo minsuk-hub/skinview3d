@@ -355,12 +355,16 @@
 		}
 
 		function reloadSkin() {
+			console.log("스킨이 재 로드 됨! : index.html의 358번줄");
 			const input = document.getElementById("skin_url");
 			const url = obtainTextureUrl("skin_url");
 			if (url === "") {
+				console.log("스킨이 없음음! : index.html의 362번줄");
 				skinViewer.loadSkin(null);
 				input.setCustomValidity("");
 			} else {
+				console.log("스킨이 있음! : index.html의 366번줄\n", "└["+url+"]");
+				
 				skinViewer.loadSkin(url, {
 					model: document.getElementById("skin_model").value,
 					ears: document.getElementById("ears_source").value === "current_skin"
@@ -370,6 +374,8 @@
 						input.setCustomValidity("Image can't be loaded.");
 						console.error(e);
 					});
+
+					
 			}
 		}
 

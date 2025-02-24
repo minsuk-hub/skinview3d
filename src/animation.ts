@@ -87,7 +87,7 @@ export class IdleAnimation extends PlayerAnimation {
 
 		// Always add an angle for cape around the x axis
 		const basicCapeRotationX = Math.PI * 0.06;
-		player.cape.rotation.x = Math.sin(t) * 0.01 + basicCapeRotationX;
+		// player.cape.rotation.x = Math.sin(t) * 0.01 + basicCapeRotationX;
 	}
 }
 
@@ -125,7 +125,7 @@ export class WalkingAnimation extends PlayerAnimation {
 
 		// Always add an angle for cape around the x axis
 		const basicCapeRotationX = Math.PI * 0.06;
-		player.cape.rotation.x = Math.sin(t / 1.5) * 0.06 + basicCapeRotationX;
+		// player.cape.rotation.x = Math.sin(t / 1.5) * 0.06 + basicCapeRotationX;
 	}
 }
 
@@ -156,7 +156,7 @@ export class RunningAnimation extends PlayerAnimation {
 		// and greater basic rotation around x axis,
 		// to cape when running.
 		const basicCapeRotationX = Math.PI * 0.3;
-		player.cape.rotation.x = Math.sin(t * 2) * 0.1 + basicCapeRotationX;
+		// player.cape.rotation.x = Math.sin(t * 2) * 0.1 + basicCapeRotationX;
 
 		// What about head shaking?
 		// You shouldn't glance right and left when running dude :P
@@ -185,8 +185,8 @@ export class FlyingAnimation extends PlayerAnimation {
 		const elytraRotationX = 0.34906584;
 		const elytraRotationZ = Math.PI / 2;
 		const interpolation = Math.pow(0.9, t);
-		player.elytra.leftWing.rotation.x = elytraRotationX + interpolation * (0.2617994 - elytraRotationX);
-		player.elytra.leftWing.rotation.z = elytraRotationZ + interpolation * (0.2617994 - elytraRotationZ);
-		player.elytra.updateRightWing();
+		// player.elytra.leftWing.rotation.x = elytraRotationX + interpolation * (0.2617994 - elytraRotationX);
+		// player.elytra.leftWing.rotation.z = elytraRotationZ + interpolation * (0.2617994 - elytraRotationZ);
+		// player.elytra.updateRightWing();
 	}
 }
